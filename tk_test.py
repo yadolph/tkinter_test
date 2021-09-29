@@ -3,9 +3,11 @@ import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 
+
 def open_file():
     browse_text.set('loading...')
-    file = askopenfile(parent=root, mode='rb', title='Choose your destiny', filetypes=[('PDF File', '*.pdf')])
+    file = askopenfile(parent=root, mode='rb', title='Choose your destiny', filetypes=[
+                       ('PDF File', '*.pdf')])
     if file:
         read_pdf = PyPDF2.PdfFileReader(file)
         page = read_pdf.getPage(0)
@@ -40,7 +42,9 @@ if __name__ == '__main__':
     instructions.grid(columnspan=3, column=0, row=1)
 
     browse_text = tk.StringVar()
-    browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font='FreeMono', bg='#20bebe', fg='white', height=2, width=15)
+    browse_btn = tk.Button(root, textvariable=browse_text,
+                           command=lambda: open_file(), font='FreeMono',
+                           bg='#20bebe', fg='white', height=2, width=15)
     browse_text.set('Browse')
     browse_btn.grid(column=1, row=2)
 
